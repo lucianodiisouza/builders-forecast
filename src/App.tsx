@@ -1,13 +1,17 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Home } from './screens'
+
+import { RootSiblingParent } from 'react-native-root-siblings'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Home />
-      <StatusBar style='auto' />
-    </View>
+    <RootSiblingParent>
+      <View style={styles.container}>
+        <Home />
+        <StatusBar style='auto' />
+      </View>
+    </RootSiblingParent>
   )
 }
 

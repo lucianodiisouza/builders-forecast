@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import Toast from 'react-native-root-toast'
+
 import api from '../../services'
 import useLocation from '../../utils/useLocation'
 
@@ -40,7 +42,7 @@ const Home = () => {
 
       setWeather(response.data)
     } else {
-      console.warn('location not found')
+      Toast.show('Localização não encontrada')
     }
   }
 
