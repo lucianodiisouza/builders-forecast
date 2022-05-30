@@ -1,5 +1,6 @@
 import * as Location from 'expo-location'
 import { useCallback, useEffect, useState } from 'react'
+import Toast from 'react-native-root-toast'
 
 const useLocation = () => {
   const [location, setLocation] = useState<Location.LocationObject>()
@@ -8,7 +9,7 @@ const useLocation = () => {
     const { status } = await Location.requestForegroundPermissionsAsync()
 
     if (status !== 'granted') {
-      console.warn('Sem permissões')
+      Toast.show('Permissões de acesso não concedidas')
       return
     }
 

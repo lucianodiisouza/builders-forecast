@@ -4,4 +4,6 @@ export enum AppColors {
   GOLDEN = '#BFBEAB',
   GRAY = '#A1AECA',
   DARK_GRAY = '#5A6872',
+  WHITE = '#ffffff',
+  BLACK = '#000000',
 }

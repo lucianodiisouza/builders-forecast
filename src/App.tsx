@@ -9,7 +9,7 @@ export default function App() {
     <RootSiblingParent>
       <View style={styles.container}>
         <Home />
-        <StatusBar style='auto' />
+        <StatusBar style='light' />
       </View>
     </RootSiblingParent>
   )

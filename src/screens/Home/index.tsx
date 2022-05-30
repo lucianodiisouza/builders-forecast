@@ -1,28 +1,20 @@
 import { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Toast from 'react-native-root-toast'
+import { Header } from '../../components'
+import LinearGradientView from '../../components/LinearGradientView'
 
 import api from '../../services'
+import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
-
-type WeatherResponse = {
-  main: {
-    feels_like: number
-    grnd_level: number
-    humidity: number
-    pressure: number
-    sea_level: number
-    temp: number
-    temp_max: number
-    temp_min: number
-  }
-  name: string
-}
+import { Container } from './styles'
+import { WeatherResponse } from './types'
 
 const Home = () => {
   const { location, getLocation } = useLocation()
 
   const [weather, setWeather] = useState<WeatherResponse>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
     getLocation()
@@ -47,25 +39,33 @@ const Home = () => {
   }
 
   return (
-    <View>
-      {!!weather && (
-        <View>
-          <Text>{weather.name}</Text>
-          <Text>{Math.floor(weather.main.temp)}º</Text>
-        </View>
-      )}
-      <TouchableOpacity
-        onPress={getWeather}
-        style={{
-          borderWidth: 1,
-          borderColor: '#000',
-          padding: 10,
-          alignItems: 'center',
-        }}
+    <Container>
+      <LinearGradientView
+        colors={[AppColors.BLUE, AppColors.DARK_BLUE]}
+        start={{ x: 0, y: 0.01 }}
+        end={{ x: 1, y: 1 }}
       >
-        <Text>Push data</Text>
-      </TouchableOpacity>
-    </View>
+        <Header city='Belo Horizonte' country='Brasil' />
+        {/* {!!weather && (
+          
+          // <View>
+          //   <Text>{weather.name}</Text>
+          //   <Text>{Math.floor(weather.main.temp)}º</Text>
+          // </View>
+        )} */}
+        <TouchableOpacity
+          onPress={getWeather}
+          style={{
+            borderWidth: 1,
+            borderColor: '#000',
+            padding: 10,
+            alignItems: 'center',
+          }}
+        >
+          <Text>Push data</Text>
+        </TouchableOpacity>
+      </LinearGradientView>
+    </Container>
   )
 }
 
