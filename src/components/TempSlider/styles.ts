@@ -6,7 +6,6 @@ export const Container = styled.View`
   height: 170px;
   background: white;
   margin-left: 20px;
-  margin-top: 40px;
 `
 
 export const ScrollContainer = styled.ScrollView`

@@ -60,7 +60,7 @@ const Home = () => {
           //   <Text>{Math.floor(weather.main.temp)}º</Text>
           // </View>
         )} */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={getWeather}
           style={{
             borderWidth: 1,
@@ -70,7 +70,7 @@ const Home = () => {
           }}
         >
           <Text>Push data</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </LinearGradientView>
     </Container>
   )

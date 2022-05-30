@@ -4,7 +4,6 @@ import { AppColors } from '../../theme/GlobalStyles'
 export const Container = styled.View`
   width: 100%;
   padding-left: 20px;
-  margin-top: 40px;
 `
 
 export const Title = styled.Text`
