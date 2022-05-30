@@ -8,6 +8,7 @@ This app was builted using React Native
 - axios
 - expo-location
 - lottie-react-native
+- feather icons -> https://feathericons.com/?query=weat
 
 ### dribbble design catched from
 

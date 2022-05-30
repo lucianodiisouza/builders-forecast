@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Toast from 'react-native-root-toast'
-import { Header } from '../../components'
-import LinearGradientView from '../../components/LinearGradientView'
 
+import { CurrentTemp, Header, LinearGradientView } from '../../components'
 import api from '../../services'
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
+
 import { Container } from './styles'
 import { WeatherResponse } from './types'
 
@@ -46,6 +46,7 @@ const Home = () => {
         end={{ x: 1, y: 1 }}
       >
         <Header city='Belo Horizonte' country='Brasil' />
+        <CurrentTemp />
         {/* {!!weather && (
           
           // <View>
