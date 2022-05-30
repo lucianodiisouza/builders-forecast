@@ -1,7 +1,32 @@
 import styled from 'styled-components/native'
+import { AppColors } from '../../theme/GlobalStyles'
 
-export const Container = styled.View``
-export const WeatherDay = styled.Text``
-export const PrevisionContainer = styled.View``
-export const TempText = styled.Text``
-export const WeatherType = styled.Text``
+export const Container = styled.View`
+  width: 100%;
+  padding: 20px;
+  margin-top: 40px;
+
+  align-items: center;
+  justify-content: center;
+`
+export const WeatherDay = styled.Text`
+  color: ${AppColors.WHITE};
+  font-size: 24px;
+  font-weight: 600;
+`
+export const PrevisionContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+`
+export const TempText = styled.Text`
+  color: ${AppColors.WHITE};
+  font-size: 48px;
+  font-weight: 700;
+  margin-left: 10px;
+`
+export const WeatherType = styled.Text`
+  color: ${AppColors.WHITE};
+  font-size: 14px;
+  margin-top: 10px;
+`
