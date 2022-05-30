@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react'
-import {
-  View,
-  Text,
-  TouchableOpacityBase,
-  TouchableOpacity,
-} from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import api from '../../services'
 import useLocation from '../../utils/useLocation'
+
+type WeatherResponse = {
+  main: {
+    feels_like: number
+    grnd_level: number
+    humidity: number
+    pressure: number
+    sea_level: number
+    temp: number
+    temp_max: number
+    temp_min: number
+  }
+  name: string
+}
 
 const Home = () => {
   const { location, getLocation } = useLocation()
 
-  const [weather, setWeather] = useState()
+  const [weather, setWeather] = useState<WeatherResponse>()
 
   useEffect(() => {
     getLocation()
@@ -35,13 +44,14 @@ const Home = () => {
     }
   }
 
-  // const handleFetchCurrentWeather = () => {
-  //   console.warn(getWeather())
-  // }
-
   return (
     <View>
-      {!!weather && <Text>{JSON.stringify(weather)}</Text>}
+      {!!weather && (
+        <View>
+          <Text>{weather.name}</Text>
+          <Text>{Math.floor(weather.main.temp)}º</Text>
+        </View>
+      )}
       <TouchableOpacity
         onPress={getWeather}
         style={{
