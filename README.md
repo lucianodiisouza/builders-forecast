@@ -19,7 +19,7 @@ https://dribbble.com/shots/7106462-Weather-App
 
 - [ ] structure
 - [ ] navigation
-- [ ] get location
+- [x] get location
 - [ ] get weather using location
 - [ ] show weather on screen
 - [ ] add loading for get location
