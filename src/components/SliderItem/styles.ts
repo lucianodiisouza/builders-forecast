@@ -1,7 +1,11 @@
 import styled from 'styled-components/native'
 import { AppColors } from '../../theme/GlobalStyles'
 
-export const Container = styled.View`
+type ContainerProps = {
+  isTheLast: boolean
+}
+
+export const Container = styled.View<ContainerProps>`
   width: 60px;
   height: 120px;
   border-radius: 30px;
@@ -9,6 +13,7 @@ export const Container = styled.View`
   margin-left: 15px;
   padding: 10px 0px;
 
+  margin-right: ${({ isTheLast }) => (isTheLast ? '50px' : 0)};
   justify-content: space-around;
   align-items: center;
 `

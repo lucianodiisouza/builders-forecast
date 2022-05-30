@@ -1,4 +1,4 @@
-import { Icon } from '..'
+import Icon from '../Icon'
 
 import { AppColors } from '../../theme/GlobalStyles'
 

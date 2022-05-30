@@ -11,6 +11,4 @@ export const ScrollContainer = styled.ScrollView`
   background-color: ${AppColors.DARK_BLUE};
   padding-left: 10px;
   border-radius: 30px;
-
-  /* box-shadow: 1px 1px 5px 0px rgba(107, 152, 242, 1); */
 `

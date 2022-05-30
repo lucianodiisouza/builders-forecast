@@ -53,24 +53,6 @@ const Home = () => {
         <Header city='Belo Horizonte' country='Brasil' />
         <CurrentTemp />
         <TempSlider />
-        {/* {!!weather && (
-          
-          // <View>
-          //   <Text>{weather.name}</Text>
-          //   <Text>{Math.floor(weather.main.temp)}º</Text>
-          // </View>
-        )} */}
-        {/* <TouchableOpacity
-          onPress={getWeather}
-          style={{
-            borderWidth: 1,
-            borderColor: '#000',
-            padding: 10,
-            alignItems: 'center',
-          }}
-        >
-          <Text>Push data</Text>
-        </TouchableOpacity> */}
       </LinearGradientView>
     </Container>
   )

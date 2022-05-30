@@ -1,4 +1,4 @@
-import SliderItem from '../CurrentTempItem'
+import SliderItem from '../SliderItem'
 import { Container, ScrollContainer } from './styles'
 
 const temp = [
@@ -42,6 +42,21 @@ const temp = [
 const TempSlider = () => {
   return (
     <Container>
+      {/* <FlatList
+        contentContainerStyle={{
+          backgroundColor: AppColors.DARK_BLUE,
+          alignItems: 'center',
+          borderBottomLeftRadius: 30,
+          borderTopLeftRadius: 30,
+          paddingRight: 50,
+          height: 180,
+        }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={temp}
+        renderItem={({ item }) => <SliderItem {...item} />}
+        keyExtractor={(item) => item.time}
+      /> */}
       <ScrollContainer
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -50,7 +65,11 @@ const TempSlider = () => {
         }}
       >
         {temp.map((item, index) => (
-          <SliderItem {...item} key={index} />
+          <SliderItem
+            {...item}
+            key={index}
+            isTheLast={index === temp.length - 1}
+          />
         ))}
       </ScrollContainer>
     </Container>
