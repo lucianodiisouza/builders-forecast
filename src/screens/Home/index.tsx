@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import Toast from 'react-native-root-toast'
 
-import { CurrentTemp, Header, LinearGradientView } from '../../components'
+import {
+  CurrentTemp,
+  Header,
+  LinearGradientView,
+  TempSlider,
+} from '../../components'
 import api from '../../services'
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
@@ -47,6 +52,7 @@ const Home = () => {
       >
         <Header city='Belo Horizonte' country='Brasil' />
         <CurrentTemp />
+        <TempSlider />
         {/* {!!weather && (
           
           // <View>
