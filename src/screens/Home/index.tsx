@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
 import Toast from 'react-native-root-toast'
 
 import {
@@ -8,6 +7,7 @@ import {
   LinearGradientView,
   TempSlider,
 } from '../../components'
+
 import api from '../../services'
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
