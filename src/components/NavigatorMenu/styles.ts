@@ -1,4 +1,3 @@
-import { TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 import { AppColors } from '../../theme/GlobalStyles'
 
@@ -8,12 +7,8 @@ export const Container = styled.View`
   margin-bottom: 30px;
 `
 
-export const OptionContainer = styled.View`
+export const Option = styled.Pressable`
   margin-right: 20px;
-`
-
-export const Option = styled(TouchableWithoutFeedback)`
-  margin-right: 10px;
 `
 
 type LabelProps = {

@@ -20,6 +20,81 @@ const Home = () => {
   const { location, getLocation } = useLocation()
 
   const [weather, setWeather] = useState<WeatherResponse>()
+  const [tomorrowWeather, setTomorrowWeather] = useState([
+    {
+      time: '9AM',
+      temp: '16º',
+      icon: 'cloud',
+    },
+    {
+      time: '10AM',
+      temp: '16º',
+      icon: 'cloud-rain',
+    },
+    {
+      time: '11AM',
+      temp: '16º',
+      icon: 'sun',
+    },
+    {
+      time: '12PM',
+      temp: '16º',
+      icon: 'sun',
+    },
+    {
+      time: '13PM',
+      temp: '16º',
+      icon: 'wind',
+    },
+    {
+      time: '14PM',
+      temp: '16º',
+      icon: 'cloud',
+    },
+    {
+      time: '15PM',
+      temp: '16º',
+      icon: 'cloud',
+    },
+  ])
+
+  const [todayWeather, setTodayWeather] = useState([
+    {
+      time: '9AM',
+      temp: '17º',
+      icon: 'cloud-rain',
+    },
+    {
+      time: '10AM',
+      temp: '18º',
+      icon: 'cloud-rain',
+    },
+    {
+      time: '11AM',
+      temp: '16º',
+      icon: 'sun',
+    },
+    {
+      time: '12PM',
+      temp: '16º',
+      icon: 'sun',
+    },
+    {
+      time: '13PM',
+      temp: '16º',
+      icon: 'wind',
+    },
+    {
+      time: '14PM',
+      temp: '16º',
+      icon: 'cloud',
+    },
+    {
+      time: '15PM',
+      temp: '16º',
+      icon: 'cloud',
+    },
+  ])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
@@ -45,6 +120,8 @@ const Home = () => {
     }
   }
 
+  const handleActiveItems = active === 'hoje' ? todayWeather : tomorrowWeather
+
   return (
     <Container>
       <LinearGradientView
@@ -56,7 +133,7 @@ const Home = () => {
         <CurrentTemp />
         <SliderContainer>
           <NavigationMenu active={active} setActive={setActive} />
-          <TempSlider />
+          <TempSlider temp={handleActiveItems} />
         </SliderContainer>
       </LinearGradientView>
     </Container>

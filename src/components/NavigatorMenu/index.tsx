@@ -1,6 +1,6 @@
 import { AppColors } from '../../theme/GlobalStyles'
 import Icon from '../Icon'
-import { Container, Option, Label, OptionContainer } from './styles'
+import { Container, Option, Label } from './styles'
 
 type Props = {
   active: 'hoje' | 'amanha'
@@ -10,31 +10,25 @@ type Props = {
 const NavigatorMenu = ({ active, setActive }: Props) => {
   return (
     <Container>
-      <OptionContainer>
-        <Option onPress={() => setActive('hoje')}>
-          <Label isActive={active === 'hoje'}>Hoje</Label>
-        </Option>
-      </OptionContainer>
+      <Option onPress={() => setActive('hoje')}>
+        <Label isActive={active === 'hoje'}>Hoje</Label>
+      </Option>
 
-      <OptionContainer>
-        <Option style={{ marginLeft: 15 }}>
-          <Label
-            onPress={() => setActive('amanha')}
-            isActive={active === 'amanha'}
-          >
-            Amanhã
-          </Label>
-        </Option>
-      </OptionContainer>
+      <Option>
+        <Label
+          onPress={() => setActive('amanha')}
+          isActive={active === 'amanha'}
+        >
+          Amanhã
+        </Label>
+      </Option>
 
-      <OptionContainer>
-        <Option>
-          <Label>
-            Próximos 7 dias{' '}
-            <Icon size={16} color={AppColors.DARK_GRAY} name='arrow-right' />
-          </Label>
-        </Option>
-      </OptionContainer>
+      <Option>
+        <Label>
+          Próximos 7 dias{' '}
+          <Icon size={16} color={AppColors.DARK_GRAY} name='arrow-right' />
+        </Label>
+      </Option>
     </Container>
   )
 }
