@@ -5,13 +5,7 @@ import {
   TempContainer,
   TemperatureLabel,
 } from './styles'
-
-type WeatherItemProps = {
-  day: string
-  icon: string
-  color: string
-  temp: string
-}
+import { WeatherItemProps } from './types'
 
 const WeatherItem = ({ day, icon, color, temp }: WeatherItemProps) => {
   return (
