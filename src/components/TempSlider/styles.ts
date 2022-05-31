@@ -8,7 +8,7 @@ export const Container = styled.View`
 `
 
 export const ScrollContainer = styled.ScrollView`
-  background-color: ${AppColors.DARK_BLUE};
+  background-color: ${AppColors.LIGHT_BLUE};
   padding-left: 10px;
   border-radius: 30px;
 `

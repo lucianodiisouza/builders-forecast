@@ -125,7 +125,7 @@ const Home = () => {
   return (
     <Container>
       <LinearGradientView
-        colors={[AppColors.BLUE, AppColors.DARK_BLUE]}
+        colors={[AppColors.BLUE, AppColors.LIGHT_BLUE]}
         start={{ x: 0, y: 0.01 }}
         end={{ x: 1, y: 1 }}
       >
