@@ -23,7 +23,7 @@ https://dribbble.com/shots/7106462-Weather-App
 - [x] navigation
 - [x] get location
 - [x] get weather using location
-- [ ] build the UI following Dribbble catched design (WIP)
+- [x] build the UI following Dribbble catched design (WIP)
 - [ ] show weather on screen
 - [ ] add loading for get location
 - [ ] add loading for get weather

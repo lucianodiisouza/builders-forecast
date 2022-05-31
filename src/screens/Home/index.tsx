@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Text } from 'react-native'
 import Toast from 'react-native-root-toast'
 
 import {
@@ -10,6 +11,7 @@ import {
 } from '../../components'
 
 import api from '../../services'
+import { getCurrentWeather } from '../../services/endpoints'
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
 
@@ -95,6 +97,7 @@ const Home = () => {
       icon: 'cloud',
     },
   ])
+
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
@@ -102,19 +105,28 @@ const Home = () => {
     getLocation()
   }, [])
 
-  const getWeather = async () => {
+  useEffect(() => {
     if (location) {
-      const lat = location.coords.altitude
-      const lon = location.coords.longitude
+      getWeather()
+    }
+  }, [])
 
-      const response = await api.get('/weather', {
-        params: {
-          lat,
-          lon,
-        },
-      })
+  const getWeather = () => {
+    if (location) {
+      setIsLoading(true)
+      const lat = location.coords.latitude ?? 0
+      const lon = location.coords.longitude ?? 0
 
-      setWeather(response.data)
+      getCurrentWeather({ lat, lon })
+        .then((res) => {
+          console.warn(res.data)
+          setWeather(res.data)
+        })
+        .catch((err) => {
+          console.warn(lat, lon)
+          console.warn(err)
+        })
+        .finally(() => setIsLoading(false))
     } else {
       Toast.show('Localização não encontrada')
     }
@@ -129,12 +141,18 @@ const Home = () => {
         start={{ x: 0, y: 0.01 }}
         end={{ x: 1, y: 1 }}
       >
-        <Header city='Belo Horizonte' country='Brasil' />
-        <CurrentTemp />
-        <SliderContainer>
-          <NavigationMenu active={active} setActive={setActive} />
-          <TempSlider temp={handleActiveItems} />
-        </SliderContainer>
+        {!!location && <Text>Obtendo localização</Text>}
+        {isLoading && <Text>Carregando...</Text>}
+        {!!weather && !isLoading && (
+          <>
+            <Header city='Belo Horizonte' country='Brasil' />
+            <CurrentTemp />
+            <SliderContainer>
+              <NavigationMenu active={active} setActive={setActive} />
+              <TempSlider temp={handleActiveItems} />
+            </SliderContainer>
+          </>
+        )}
       </LinearGradientView>
     </Container>
   )
