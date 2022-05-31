@@ -1,7 +1,5 @@
 export const getIcon = (icon: string) => {
-  const weatherIcon = icon.toLocaleLowerCase()
-
-  switch (weatherIcon) {
+  switch (icon) {
     case 'clouds':
       return 'cloud'
     case 'cloud-rain':

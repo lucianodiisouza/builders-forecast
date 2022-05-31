@@ -18,7 +18,11 @@ const CurrentTemp = ({ temp, weatherCondition, icon }: CurrentTempProps) => {
     <Container>
       <WeatherDay>Hoje</WeatherDay>
       <PrevisionContainer>
-        <Icon name={getIcon(icon)} size={64} color={AppColors.YELLOW} />
+        <Icon
+          name={getIcon(icon.toLocaleLowerCase())}
+          size={64}
+          color={AppColors.YELLOW}
+        />
         <TempText>{formattedTemp} º</TempText>
       </PrevisionContainer>
       <WeatherType>{weatherCondition}</WeatherType>

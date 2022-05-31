@@ -28,8 +28,6 @@ const NextDays = () => {
       }
     })
 
-    newItems.shift()
-
     setDays(newItems)
   }
 

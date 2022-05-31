@@ -1,32 +1,21 @@
 import { NavigationProp, useNavigation } from '@react-navigation/core'
 import { AppColors } from '../../theme/GlobalStyles'
 import Icon from '../Icon'
-import { Container, Option, Label } from './styles'
-import { NavigationMenuProps, NextDaysScreen } from './types'
+import { Container, Option, Label, NextDaysLabel } from './styles'
+import { NextDaysScreen } from './types'
 
-const NavigatorMenu = ({ active, setActive }: NavigationMenuProps) => {
+const NavigatorMenu = () => {
   const navigation = useNavigation<NavigationProp<NextDaysScreen>>()
 
   return (
     <Container>
-      <Option onPress={() => setActive('hoje')}>
-        <Label isActive={active === 'hoje'}>Hoje</Label>
-      </Option>
-
-      <Option>
-        <Label
-          onPress={() => setActive('amanha')}
-          isActive={active === 'amanha'}
-        >
-          Amanhã
-        </Label>
-      </Option>
+      <Label>Amanhã</Label>
 
       <Option onPress={() => navigation.navigate('NextDays')}>
-        <Label>
+        <NextDaysLabel>
           Próximos 5 dias
           <Icon size={16} color={AppColors.GRAY} name='arrow-right' />
-        </Label>
+        </NextDaysLabel>
       </Option>
     </Container>
   )

@@ -20,9 +20,10 @@ export const Container = styled.View<ContainerProps>`
 
 export const ItemTime = styled.Text`
   font-size: 10px;
+  font-weight: 600;
   color: ${AppColors.WHITE};
 `
 export const ItemTemp = styled.Text`
-  font-size: 10px;
+  font-size: 12px;
   color: ${AppColors.WHITE};
 `
