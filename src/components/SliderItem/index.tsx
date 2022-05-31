@@ -10,12 +10,11 @@ type Props = {
 }
 
 const SliderItem = ({ time, temp, icon, isTheLast }: Props) => {
-  console.log(time, temp, icon)
   return (
     <Container isTheLast={isTheLast}>
-      <ItemTime>9AM</ItemTime>
-      <Icon name='cloud' size={18} color={AppColors.WHITE} />
-      <ItemTemp>16º</ItemTemp>
+      <ItemTime>{time}</ItemTime>
+      <Icon name={icon} size={18} color={AppColors.WHITE} />
+      <ItemTemp>{temp}</ItemTemp>
     </Container>
   )
 }

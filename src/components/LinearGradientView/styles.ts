@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 export const GradientContainer = styled(LinearGradient)`
   width: 100%;
   height: 100%;
-  padding-top: 20px;
+
+  padding: 30px 0;
 
   justify-content: space-around;
 `

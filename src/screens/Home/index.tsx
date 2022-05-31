@@ -5,6 +5,7 @@ import {
   CurrentTemp,
   Header,
   LinearGradientView,
+  NavigationMenu,
   TempSlider,
 } from '../../components'
 
@@ -12,7 +13,7 @@ import api from '../../services'
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../utils/useLocation'
 
-import { Container } from './styles'
+import { Container, SliderContainer } from './styles'
 import { WeatherResponse } from './types'
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
 
   const [weather, setWeather] = useState<WeatherResponse>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
   useEffect(() => {
     getLocation()
@@ -52,7 +54,10 @@ const Home = () => {
       >
         <Header city='Belo Horizonte' country='Brasil' />
         <CurrentTemp />
-        <TempSlider />
+        <SliderContainer>
+          <NavigationMenu active={active} setActive={setActive} />
+          <TempSlider />
+        </SliderContainer>
       </LinearGradientView>
     </Container>
   )

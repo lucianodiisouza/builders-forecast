@@ -10,22 +10,22 @@ const temp = [
   {
     time: '10AM',
     temp: '16º',
-    icon: 'cloud',
+    icon: 'cloud-rain',
   },
   {
     time: '11AM',
     temp: '16º',
-    icon: 'cloud',
+    icon: 'sun',
   },
   {
     time: '12PM',
     temp: '16º',
-    icon: 'cloud',
+    icon: 'sun',
   },
   {
     time: '13PM',
     temp: '16º',
-    icon: 'cloud',
+    icon: 'wind',
   },
   {
     time: '14PM',
@@ -42,21 +42,6 @@ const temp = [
 const TempSlider = () => {
   return (
     <Container>
-      {/* <FlatList
-        contentContainerStyle={{
-          backgroundColor: AppColors.DARK_BLUE,
-          alignItems: 'center',
-          borderBottomLeftRadius: 30,
-          borderTopLeftRadius: 30,
-          paddingRight: 50,
-          height: 180,
-        }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={temp}
-        renderItem={({ item }) => <SliderItem {...item} />}
-        keyExtractor={(item) => item.time}
-      /> */}
       <ScrollContainer
         horizontal
         showsHorizontalScrollIndicator={false}
