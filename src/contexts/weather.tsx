@@ -1,16 +1,9 @@
 import { LocationObject } from 'expo-location'
-import React, { createContext } from 'react'
-import { TempSliderProps } from '../components/TempSlider/types'
+import React, { createContext, useEffect } from 'react'
 import { WeatherResponse, WeeklyWeatherResponse } from '../hooks/types'
+import useLocation from '../hooks/useLocation'
 import { useTodayWeather, useWeeklyWeather } from '../hooks/useWeather'
 import tomorrowFilter from '../utils/tomorrowFilter'
-
-type Item = {
-  time: string
-  temp: string
-  icon: string
-  color: string
-}
 
 type WeatherContextType = {
   weather: WeatherResponse | undefined
@@ -20,6 +13,8 @@ type WeatherContextType = {
   getWeeklyWeather: (location: LocationObject) => void
   isLoadingWeeklyWeather: boolean
   tomorrowWeather: any
+  location: LocationObject | undefined
+  getLocation: () => void
 }
 
 export const WeatherContext = createContext<WeatherContextType>(
@@ -30,6 +25,19 @@ const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
   const { weather, getWeather, isLoadingTodayWeather } = useTodayWeather()
   const { weeklyWeather, getWeeklyWeather, isLoadingWeeklyWeather } =
     useWeeklyWeather()
+
+  const { getLocation, location } = useLocation()
+
+  useEffect(() => {
+    getLocation()
+  }, [])
+
+  useEffect(() => {
+    if (location) {
+      getWeather(location)
+      getWeeklyWeather(location)
+    }
+  }, [location])
 
   const tomorrowWeather = weeklyWeather ? tomorrowFilter(weeklyWeather) : []
 
@@ -43,6 +51,8 @@ const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
         getWeeklyWeather,
         isLoadingWeeklyWeather,
         tomorrowWeather,
+        location,
+        getLocation,
       }}
     >
       {children}

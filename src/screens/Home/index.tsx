@@ -11,7 +11,6 @@ import {
 } from '../../components'
 
 import { AppColors } from '../../theme/GlobalStyles'
-import useLocation from '../../hooks/useLocation'
 
 import { Container, SliderContainer } from './styles'
 import { WeatherContext } from '../../contexts/weather'
@@ -24,16 +23,8 @@ const Home = () => {
     getWeeklyWeather,
     isLoadingWeeklyWeather,
     tomorrowWeather,
+    location,
   } = useContext(WeatherContext)
-
-  const { location } = useLocation()
-
-  useEffect(() => {
-    if (location) {
-      getWeather(location)
-      getWeeklyWeather(location)
-    }
-  }, [location])
 
   return (
     <Container>
