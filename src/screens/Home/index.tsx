@@ -1,8 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 
 import {
   AnimatedFetch,
   AnimatedLocation,
+  AnimatedOffline,
   CurrentTemp,
   Header,
   LinearGradientView,
@@ -16,15 +17,8 @@ import { Container, SliderContainer } from './styles'
 import { WeatherContext } from '../../contexts/weather'
 
 const Home = () => {
-  const {
-    weather,
-    getWeather,
-    isLoadingTodayWeather,
-    getWeeklyWeather,
-    isLoadingWeeklyWeather,
-    tomorrowWeather,
-    location,
-  } = useContext(WeatherContext)
+  const { weather, isLoading, tomorrowWeather, location, isOffline } =
+    useContext(WeatherContext)
 
   return (
     <Container>
@@ -33,12 +27,15 @@ const Home = () => {
         start={{ x: 0, y: 0.01 }}
         end={{ x: 1, y: 1 }}
       >
+        {isOffline && (
+          <AnimatedOffline label='Você está desconectado da internet!' />
+        )}
         {!location && <AnimatedLocation label='Obtendo sua localização' />}
 
-        {isLoadingTodayWeather && isLoadingWeeklyWeather && (
+        {isLoading && !isOffline && (
           <AnimatedFetch label='Carregando informações do clima' />
         )}
-        {!!weather && !isLoadingTodayWeather && (
+        {!!weather && !isLoading && !isOffline && (
           <>
             <Header city={weather.name} country={weather.sys.country} />
             <CurrentTemp
@@ -51,6 +48,10 @@ const Home = () => {
               <TempSlider temp={tomorrowWeather} />
             </SliderContainer>
           </>
+        )}
+
+        {!weather && !isLoading && !isOffline && (
+          <AnimatedOffline label='Algo de errado não está certo!' />
         )}
       </LinearGradientView>
     </Container>

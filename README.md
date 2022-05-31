@@ -27,13 +27,14 @@ https://dribbble.com/shots/7106462-Weather-App
 - [x] show weather on screen
 - [x] add loading for get location
 - [x] add loading for get weather
-- [ ] get daily forecast
+- [x] get daily forecast
 - [-] get weekly forecast (it will no be possible, the Free API does not provide it)
 - [x] get 5 days forecast
 - [x] show weekly forecast page
 - [x] add refresh data button
+- [x] migrate all weather data to context
+- [x] check if user is online (use expo-network // react-community/net-info)
+- [x] validate api status - the api does not provide an health status
 - [ ] add loading screen (splash)
 - [ ] add app icon
 - [ ] deploy to expo
-- [x] migrate all weather data to context
-- [ ] check if user is online (use expo-network // react-community/net-info)
