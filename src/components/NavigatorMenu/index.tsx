@@ -26,7 +26,7 @@ const NavigatorMenu = ({ active, setActive }: Props) => {
       <Option>
         <Label>
           Próximos 7 dias{' '}
-          <Icon size={16} color={AppColors.DARK_GRAY} name='arrow-right' />
+          <Icon size={16} color={AppColors.GRAY} name='arrow-right' />
         </Label>
       </Option>
     </Container>

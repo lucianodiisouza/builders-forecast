@@ -29,7 +29,7 @@ const useDate = () => {
     'Sábado',
   ][dayIndex]
 
-  return `${day}, ${today.getUTCDate()} de ${month}`
+  return `${day}, ${today.getDate()} de ${month}`
 }
 
 export default useDate

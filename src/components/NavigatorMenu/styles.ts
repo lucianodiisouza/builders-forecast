@@ -15,7 +15,6 @@ type LabelProps = {
   isActive?: boolean
 }
 export const Label = styled.Text<LabelProps>`
-  color: ${({ isActive }) =>
-    isActive ? AppColors.WHITE : AppColors.DARK_GRAY};
+  color: ${({ isActive }) => (isActive ? AppColors.WHITE : AppColors.GRAY)};
   font-weight: 500;
 `
