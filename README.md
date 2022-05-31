@@ -24,9 +24,10 @@ https://dribbble.com/shots/7106462-Weather-App
 - [x] get location
 - [x] get weather using location
 - [x] build the UI following Dribbble catched design (WIP)
-- [ ] show weather on screen
-- [ ] add loading for get location
-- [ ] add loading for get weather
+- [x] show weather on screen
+- [x] add loading for get location
+- [x] add loading for get weather
 - [ ] get daily forecast
-- [ ] get weekly forecast
-- [ ] show weekly forecast page
+- [-] get weekly forecast (it will no be possible, the Free API does not provide it)
+- [ ] get 5 days forecast
+- [x] show weekly forecast page

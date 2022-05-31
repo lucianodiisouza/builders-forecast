@@ -1,4 +1,4 @@
-export type CurrentWeatherRequestParams = {
+export type WeatherRequestParams = {
   lat: number
   lon: number
 }

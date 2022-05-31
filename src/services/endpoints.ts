@@ -1,7 +1,7 @@
 import api from '.'
-import { CurrentWeatherRequestParams } from './types'
+import { WeatherRequestParams } from './types'
 
-const getCurrentWeather = async ({ lat, lon }: CurrentWeatherRequestParams) => {
+const fetchCurrentWeather = async ({ lat, lon }: WeatherRequestParams) => {
   const response = await api.get('/weather', {
     params: {
       lon,
@@ -12,4 +12,14 @@ const getCurrentWeather = async ({ lat, lon }: CurrentWeatherRequestParams) => {
   return response || {}
 }
 
-export { getCurrentWeather }
+const fetchNextDaysWeather = async ({ lat, lon }: WeatherRequestParams) => {
+  const response = await api.get('/forecast', {
+    params: {
+      lat,
+      lon,
+    },
+  })
+
+  return response || {}
+}
+export { fetchCurrentWeather, fetchNextDaysWeather }

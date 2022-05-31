@@ -13,13 +13,15 @@ import {
 import { AppColors } from '../../theme/GlobalStyles'
 
 import useLocation from '../../hooks/useLocation'
-import useWeather from '../../hooks/useWeather'
+import { useWeeklyWeather, useTodayWeather } from '../../hooks/useWeather'
 
 import { Container, SliderContainer } from './styles'
 
 const Home = () => {
-  const { location, getLocation } = useLocation()
-  const { weather, getWeather, isLoading } = useWeather()
+  const { location } = useLocation()
+  const { weather, getWeather, isLoading } = useTodayWeather()
+  const { weeklyWeather, getWeeklyWeather } = useWeeklyWeather()
+
   const [tomorrowWeather, setTomorrowWeather] = useState([
     {
       time: '9AM',
@@ -99,18 +101,15 @@ const Home = () => {
   const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
   useEffect(() => {
-    // getLocation()
-  }, [])
-
-  useEffect(() => {
     if (location) {
       getWeather(location)
+      getWeeklyWeather(location)
     }
   }, [location])
 
   useEffect(() => {
-    console.log(weather)
-  }, [weather])
+    console.warn(weeklyWeather)
+  }, [weeklyWeather])
 
   const handleActiveItems = active === 'hoje' ? todayWeather : tomorrowWeather
 

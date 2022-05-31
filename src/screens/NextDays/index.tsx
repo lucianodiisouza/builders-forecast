@@ -50,7 +50,7 @@ const nextDays = [
 const NextDays = () => {
   return (
     <Container>
-      <ScreenLabel>Próximos 7 Dias</ScreenLabel>
+      <ScreenLabel>Próximos 5 Dias</ScreenLabel>
       {nextDays.map((item, index) => (
         <WeatherItem key={index} {...item} />
       ))}

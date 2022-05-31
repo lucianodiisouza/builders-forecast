@@ -2,11 +2,13 @@ import { LocationObject } from 'expo-location'
 import { useState } from 'react'
 import Toast from 'react-native-root-toast'
 import { WeatherResponse } from '../screens/Home/types'
-import { getCurrentWeather } from '../services/endpoints'
+import {
+  fetchCurrentWeather,
+  fetchNextDaysWeather,
+} from '../services/endpoints'
 import { convertCountryCodeToCountry } from '../utils/country'
-import useLocation from './useLocation'
 
-const useWeather = () => {
+const useTodayWeather = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [weather, setWeather] = useState<WeatherResponse>()
   const [error, setError] = useState('')
@@ -17,7 +19,7 @@ const useWeather = () => {
       const lat = location.coords.latitude ?? 0
       const lon = location.coords.longitude ?? 0
 
-      getCurrentWeather({ lat, lon })
+      fetchCurrentWeather({ lat, lon })
         .then((res) => {
           const countryCode = res.data.sys.country
 
@@ -39,4 +41,30 @@ const useWeather = () => {
   return { isLoading, weather, getWeather, error }
 }
 
-export default useWeather
+const useWeeklyWeather = () => {
+  const [isLoadingNextDays, setIsLodadingNextDays] = useState<boolean>(false)
+  const [weeklyWeather, setWeeklyWeather] = useState()
+  const [error, setError] = useState('')
+
+  const getWeeklyWeather = (location: LocationObject) => {
+    if (location) {
+      setIsLodadingNextDays(true)
+      const lat = location.coords.latitude ?? 0
+      const lon = location.coords.longitude ?? 0
+
+      fetchNextDaysWeather({ lat, lon })
+        .then((res) => {
+          setWeeklyWeather(res.data)
+        })
+        .catch(() => {
+          Toast.show('Erro ao obter a previsão dos próximos dias')
+        })
+        .finally(() => setIsLodadingNextDays(false))
+    } else {
+      Toast.show('Localização não encontrada')
+    }
+  }
+  return { isLoadingNextDays, weeklyWeather, getWeeklyWeather, error }
+}
+
+export { useTodayWeather, useWeeklyWeather }
