@@ -1,4 +1,4 @@
-import useDate from '../../utils/useDate'
+import useDate from '../../hooks/useDate'
 import { Container, Title, TextDate } from './styles'
 import { HeaderProps } from './types'
 

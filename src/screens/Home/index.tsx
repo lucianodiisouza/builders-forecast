@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Text } from 'react-native'
-import Toast from 'react-native-root-toast'
 
 import {
   CurrentTemp,
@@ -10,18 +9,16 @@ import {
   TempSlider,
 } from '../../components'
 
-import api from '../../services'
-import { getCurrentWeather } from '../../services/endpoints'
 import { AppColors } from '../../theme/GlobalStyles'
-import useLocation from '../../utils/useLocation'
+
+import useLocation from '../../hooks/useLocation'
+import useWeather from '../../hooks/useWeather'
 
 import { Container, SliderContainer } from './styles'
-import { WeatherResponse } from './types'
 
 const Home = () => {
   const { location, getLocation } = useLocation()
-
-  const [weather, setWeather] = useState<WeatherResponse>()
+  const { weather, getWeather, isLoading } = useWeather()
   const [tomorrowWeather, setTomorrowWeather] = useState([
     {
       time: '9AM',
@@ -98,7 +95,6 @@ const Home = () => {
     },
   ])
 
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
   useEffect(() => {
@@ -107,30 +103,9 @@ const Home = () => {
 
   useEffect(() => {
     if (location) {
-      getWeather()
+      getWeather(location)
     }
-  }, [])
-
-  const getWeather = () => {
-    if (location) {
-      setIsLoading(true)
-      const lat = location.coords.latitude ?? 0
-      const lon = location.coords.longitude ?? 0
-
-      getCurrentWeather({ lat, lon })
-        .then((res) => {
-          console.warn(res.data)
-          setWeather(res.data)
-        })
-        .catch((err) => {
-          console.warn(lat, lon)
-          console.warn(err)
-        })
-        .finally(() => setIsLoading(false))
-    } else {
-      Toast.show('Localização não encontrada')
-    }
-  }
+  }, [location])
 
   const handleActiveItems = active === 'hoje' ? todayWeather : tomorrowWeather
 
@@ -145,7 +120,7 @@ const Home = () => {
         {isLoading && <Text>Carregando...</Text>}
         {!!weather && !isLoading && (
           <>
-            <Header city='Belo Horizonte' country='Brasil' />
+            <Header city={weather.name} country='Brasil' />
             <CurrentTemp />
             <SliderContainer>
               <NavigationMenu active={active} setActive={setActive} />
