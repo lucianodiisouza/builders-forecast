@@ -1,5 +1,6 @@
 type WeatherStatus = {
   description: string
+  icon: string
 }
 
 export type WeatherResponse = {

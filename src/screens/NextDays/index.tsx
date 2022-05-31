@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { WeatherItem } from '../../components'
 import useLocation from '../../hooks/useLocation'
 import { useWeeklyWeather } from '../../hooks/useWeather'
 import { AppColors } from '../../theme/GlobalStyles'
 import { getTranslatedDay } from '../../utils/date'
 import { Container, ScreenLabel } from './styles'
+import { WeatherDay } from './types'
 
-type WeatherDay = {
-  day: string
-  color: string
-  icon: string
-  temp: number
-}
 const NextDays = () => {
   const { getWeeklyWeather, weeklyWeather } = useWeeklyWeather()
   const [days, setDays] = useState<WeatherDay[]>()
@@ -23,11 +18,11 @@ const NextDays = () => {
     }
   }, [location])
 
-  const filterDays = () => {
+  const filterDays = useCallback(() => {
     const eachDayWeather = weeklyWeather?.list?.map((day) => {
       return {
         day: getTranslatedDay(day.dt_txt),
-        icon: 'sun',
+        icon: day.weather[0].main,
         temp: day.main.temp,
         color: AppColors.YELLOW,
       }
@@ -42,7 +37,7 @@ const NextDays = () => {
     })
 
     setDays(newItems)
-  }
+  }, [weeklyWeather])
 
   useEffect(() => {
     filterDays()
@@ -55,7 +50,7 @@ const NextDays = () => {
         days.map((item, index) => {
           const data = {
             day: item.day,
-            icon: 'sun',
+            icon: item.icon,
             color: AppColors.YELLOW,
             temp: item.temp.toFixed(0),
           }

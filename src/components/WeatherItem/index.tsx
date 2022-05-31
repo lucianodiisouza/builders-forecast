@@ -1,3 +1,4 @@
+import { getIcon } from '../../utils/icon'
 import Icon from '../Icon'
 import {
   Container,
@@ -12,7 +13,7 @@ const WeatherItem = ({ day, icon, color, temp }: WeatherItemProps) => {
     <Container>
       <WeatherItemLabel>{day}</WeatherItemLabel>
       <TempContainer>
-        <Icon name={icon} size={24} color={color} />
+        <Icon name={getIcon(icon)} size={24} color={color} />
         <TemperatureLabel>{temp}º </TemperatureLabel>
       </TempContainer>
     </Container>

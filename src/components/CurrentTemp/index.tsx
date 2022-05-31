@@ -10,14 +10,15 @@ import {
   WeatherType,
 } from './styles'
 import { CurrentTempProps } from './types'
+import { getIcon } from '../../utils/icon'
 
-const CurrentTemp = ({ temp, weatherCondition }: CurrentTempProps) => {
+const CurrentTemp = ({ temp, weatherCondition, icon }: CurrentTempProps) => {
   const formattedTemp = temp.toFixed(0)
   return (
     <Container>
       <WeatherDay>Hoje</WeatherDay>
       <PrevisionContainer>
-        <Icon name='sun' size={64} color={AppColors.YELLOW} />
+        <Icon name={getIcon(icon)} size={64} color={AppColors.YELLOW} />
         <TempText>{formattedTemp} º</TempText>
       </PrevisionContainer>
       <WeatherType>{weatherCondition}</WeatherType>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Text } from 'react-native'
 
 import {
   AnimationContainer,
@@ -11,9 +10,8 @@ import {
 } from '../../components'
 
 import { AppColors } from '../../theme/GlobalStyles'
-
 import useLocation from '../../hooks/useLocation'
-import { useWeeklyWeather, useTodayWeather } from '../../hooks/useWeather'
+import { useTodayWeather } from '../../hooks/useWeather'
 
 import { Container, SliderContainer } from './styles'
 
@@ -129,6 +127,7 @@ const Home = () => {
             <CurrentTemp
               temp={weather.main.temp}
               weatherCondition={weather.weather[0].description}
+              icon={weather.weather[0].icon}
             />
             <SliderContainer>
               <NavigationMenu active={active} setActive={setActive} />
