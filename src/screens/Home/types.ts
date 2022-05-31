@@ -10,4 +10,7 @@ export type WeatherResponse = {
     temp_min: number
   }
   name: string
+  sys: {
+    country: string
+  }
 }

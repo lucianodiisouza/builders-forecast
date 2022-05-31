@@ -120,7 +120,7 @@ const Home = () => {
         {isLoading && <Text>Carregando...</Text>}
         {!!weather && !isLoading && (
           <>
-            <Header city={weather.name} country='Brasil' />
+            <Header city={weather.name} country={weather.sys.country} />
             <CurrentTemp />
             <SliderContainer>
               <NavigationMenu active={active} setActive={setActive} />

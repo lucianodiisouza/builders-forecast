@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Toast from 'react-native-root-toast'
 import { WeatherResponse } from '../screens/Home/types'
 import { getCurrentWeather } from '../services/endpoints'
+import { convertCountryCodeToCountry } from '../utils/country'
 import useLocation from './useLocation'
 
 const useWeather = () => {
@@ -18,12 +19,17 @@ const useWeather = () => {
 
       getCurrentWeather({ lat, lon })
         .then((res) => {
-          console.warn(res.data)
-          setWeather(res.data)
+          const countryCode = res.data.sys.country
+
+          const response = {
+            ...res.data,
+            sys: { country: convertCountryCodeToCountry(countryCode) },
+          }
+
+          setWeather(response)
         })
-        .catch((err) => {
-          console.warn(lat, lon)
-          console.warn(err)
+        .catch(() => {
+          Toast.show('Erro ao obter a previsão do tempo')
         })
         .finally(() => setIsLoading(false))
     } else {
