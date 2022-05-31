@@ -1,5 +1,5 @@
 type WeatherStatus = {
-  description: 'céu limpo'
+  description: string
 }
 
 export type WeatherResponse = {

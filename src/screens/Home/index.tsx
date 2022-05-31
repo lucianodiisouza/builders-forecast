@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Text } from 'react-native'
 
 import {
+  AnimationContainer,
   CurrentTemp,
   Header,
   LinearGradientView,
@@ -98,7 +99,7 @@ const Home = () => {
   const [active, setActive] = useState<'hoje' | 'amanha'>('hoje')
 
   useEffect(() => {
-    getLocation()
+    // getLocation()
   }, [])
 
   useEffect(() => {
@@ -120,8 +121,15 @@ const Home = () => {
         start={{ x: 0, y: 0.01 }}
         end={{ x: 1, y: 1 }}
       >
-        {!location && <Text>Obtendo localização</Text>}
-        {isLoading && <Text>Carregando...</Text>}
+        {!location && (
+          <AnimationContainer type='location' label='Obtendo sua localização' />
+        )}
+        {isLoading && (
+          <AnimationContainer
+            type='loading'
+            label='Carregando informações do clima'
+          />
+        )}
         {!!weather && !isLoading && (
           <>
             <Header city={weather.name} country={weather.sys.country} />
