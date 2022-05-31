@@ -11,7 +11,7 @@ const AnimationContainer = ({ type, label }: AnimationContainerProps) => {
     <Container>
       <LottieView autoPlay source={type === 'location' ? location : loading} />
 
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
     </Container>
   )
 }

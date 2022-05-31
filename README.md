@@ -31,5 +31,7 @@ https://dribbble.com/shots/7106462-Weather-App
 - [-] get weekly forecast (it will no be possible, the Free API does not provide it)
 - [x] get 5 days forecast
 - [x] show weekly forecast page
-- [ ] add skelethon for weekly forecast
-- [ ] add cache layer (react-query?) for forecasts
+- [ ] add loading screen (splash)
+- [ ] add app icon
+- [ ] deploy to expo
+- [ ] migrate all weather data to context
