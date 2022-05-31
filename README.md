@@ -1,6 +1,7 @@
 ## Builders Forecast
 
-This app was builted using React Native
+This app was builted using React Native for Builders ReactNative challenge <br />
+Challenge: https://platformbuilders.notion.site/Desafio-735535d8d3ac484a9a969c454813ccc5
 
 ### libs
 
