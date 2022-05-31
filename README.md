@@ -18,10 +18,11 @@ https://dribbble.com/shots/7106462-Weather-App
 
 ### tasks
 
-- [ ] structure
-- [ ] navigation
+- [x] structure
+- [x] navigation
 - [x] get location
-- [ ] get weather using location
+- [x] get weather using location
+- [ ] build the UI following Dribbble catched design (WIP)
 - [ ] show weather on screen
 - [ ] add loading for get location
 - [ ] add loading for get weather
