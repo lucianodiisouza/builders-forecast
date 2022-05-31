@@ -1,49 +1,49 @@
-import { Icon } from '../../components'
+import { WeatherItem } from '../../components'
 import { AppColors } from '../../theme/GlobalStyles'
-import {
-  Container,
-  TempContainer,
-  TemperatureLabel,
-  WeatherItem,
-  WeatherItemLabel,
-  ScreenLabel,
-} from './styles'
+import { Container, ScreenLabel } from './styles'
 
 const nextDays = [
   {
     day: 'Domingo',
     icon: 'sun',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Segunda',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Terça',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Quarta',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Quinta',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Sexta',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
   {
     day: 'Sábado',
     icon: 'cloud',
     temp: '12 º',
+    color: AppColors.YELLOW,
   },
 ]
 
@@ -51,15 +51,8 @@ const NextDays = () => {
   return (
     <Container>
       <ScreenLabel>Próximos 7 Dias</ScreenLabel>
-
       {nextDays.map((item, index) => (
-        <WeatherItem key={index}>
-          <WeatherItemLabel>{item.day}</WeatherItemLabel>
-          <TempContainer>
-            <Icon name={item.icon} size={24} color={AppColors.BLUE} />
-            <TemperatureLabel>{item.temp}</TemperatureLabel>
-          </TempContainer>
-        </WeatherItem>
+        <WeatherItem key={index} {...item} />
       ))}
     </Container>
   )
