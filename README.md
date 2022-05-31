@@ -23,7 +23,7 @@ https://dribbble.com/shots/7106462-Weather-App
 - [x] navigation
 - [x] get location
 - [x] get weather using location
-- [x] build the UI following Dribbble catched design (WIP)
+- [x] build the UI following Dribbble catched design
 - [x] show weather on screen
 - [x] add loading for get location
 - [x] add loading for get weather
@@ -35,3 +35,4 @@ https://dribbble.com/shots/7106462-Weather-App
 - [ ] add app icon
 - [ ] deploy to expo
 - [ ] migrate all weather data to context
+- [ ] check if user is online (use expo-network // react-community/net-info)

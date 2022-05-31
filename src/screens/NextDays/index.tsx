@@ -1,23 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AnimationContainer, WeatherItem } from '../../components'
-import useLocation from '../../hooks/useLocation'
-import { useWeeklyWeather } from '../../hooks/useWeather'
+import { WeatherContext } from '../../contexts/weather'
 import { AppColors } from '../../theme/GlobalStyles'
 import { getTranslatedDay } from '../../utils/date'
 import { Container, ScreenLabel } from './styles'
 import { WeatherDay } from './types'
 
 const NextDays = () => {
-  const { getWeeklyWeather, weeklyWeather, isLoadingNextDays } =
-    useWeeklyWeather()
+  const { weeklyWeather } = useContext(WeatherContext)
   const [days, setDays] = useState<WeatherDay[]>()
-  const { location } = useLocation()
-
-  useEffect(() => {
-    if (location) {
-      getWeeklyWeather(location)
-    }
-  }, [location])
 
   const filterDays = () => {
     const eachDayWeather = weeklyWeather?.list?.map((day) => {
@@ -49,7 +40,6 @@ const NextDays = () => {
   return (
     <Container>
       <ScreenLabel>Próximos 5 Dias</ScreenLabel>
-      {isLoadingNextDays && <AnimationContainer type='loading' />}
       {!!days &&
         days.map((item, index) => {
           const data = {

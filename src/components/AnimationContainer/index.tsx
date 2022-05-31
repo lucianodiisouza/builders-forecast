@@ -9,6 +9,7 @@ const loading = require('../../assets/animations/loading.json')
 const AnimationContainer = ({ type, label }: AnimationContainerProps) => {
   return (
     <Container>
+      {/* @ts-ignore */}
       <LottieView autoPlay source={type === 'location' ? location : loading} />
 
       {label && <Label>{label}</Label>}

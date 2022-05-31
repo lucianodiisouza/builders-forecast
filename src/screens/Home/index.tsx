@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import {
   AnimationContainer,
@@ -11,13 +11,21 @@ import {
 
 import { AppColors } from '../../theme/GlobalStyles'
 import useLocation from '../../hooks/useLocation'
-import { useTodayWeather } from '../../hooks/useWeather'
 
 import { Container, SliderContainer } from './styles'
+import { WeatherContext } from '../../contexts/weather'
 
 const Home = () => {
+  const {
+    weather,
+    getWeather,
+    isLoadingTodayWeather,
+    getWeeklyWeather,
+    isLoadingWeeklyWeather,
+    weeklyWeather,
+  } = useContext(WeatherContext)
+
   const { location } = useLocation()
-  const { weather, getWeather, isLoading } = useTodayWeather()
 
   const [tomorrowWeather, setTomorrowWeather] = useState([
     {
@@ -100,6 +108,7 @@ const Home = () => {
   useEffect(() => {
     if (location) {
       getWeather(location)
+      getWeeklyWeather(location)
     }
   }, [location])
 
@@ -115,13 +124,14 @@ const Home = () => {
         {!location && (
           <AnimationContainer type='location' label='Obtendo sua localização' />
         )}
-        {isLoading && (
+
+        {isLoadingTodayWeather && isLoadingWeeklyWeather && (
           <AnimationContainer
             type='loading'
             label='Carregando informações do clima'
           />
         )}
-        {!!weather && !isLoading && (
+        {!!weather && !isLoadingTodayWeather && (
           <>
             <Header city={weather.name} country={weather.sys.country} />
             <CurrentTemp

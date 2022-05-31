@@ -1,21 +1,23 @@
 import { LocationObject } from 'expo-location'
 import { useState } from 'react'
 import Toast from 'react-native-root-toast'
-import { WeatherResponse, WeeklyWeatherResponse } from '../screens/Home/types'
+
 import {
   fetchCurrentWeather,
   fetchNextDaysWeather,
 } from '../services/endpoints'
 import { convertCountryCodeToCountry } from '../utils/country'
+import { WeatherResponse, WeeklyWeatherResponse } from './types'
 
 const useTodayWeather = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoadingTodayWeather, setIsLoadingTodayWeather] =
+    useState<boolean>(false)
   const [weather, setWeather] = useState<WeatherResponse>()
   const [error, setError] = useState('')
 
   const getWeather = (location: LocationObject) => {
     if (location) {
-      setIsLoading(true)
+      setIsLoadingTodayWeather(true)
       const lat = location.coords.latitude ?? 0
       const lon = location.coords.longitude ?? 0
 
@@ -33,22 +35,23 @@ const useTodayWeather = () => {
         .catch(() => {
           Toast.show('Erro ao obter a previsão do tempo')
         })
-        .finally(() => setIsLoading(false))
+        .finally(() => setIsLoadingTodayWeather(false))
     } else {
       Toast.show('Localização não encontrada')
     }
   }
-  return { isLoading, weather, getWeather, error }
+  return { isLoadingTodayWeather, weather, getWeather, error }
 }
 
 const useWeeklyWeather = () => {
-  const [isLoadingNextDays, setIsLodadingNextDays] = useState<boolean>(false)
+  const [isLoadingWeeklyWeather, setIsLoadingWeeklyWeather] =
+    useState<boolean>(false)
   const [weeklyWeather, setWeeklyWeather] = useState<WeeklyWeatherResponse>()
   const [error, setError] = useState('')
 
   const getWeeklyWeather = (location: LocationObject) => {
     if (location) {
-      setIsLodadingNextDays(true)
+      setIsLoadingWeeklyWeather(true)
       const lat = location.coords.latitude ?? 0
       const lon = location.coords.longitude ?? 0
 
@@ -59,12 +62,12 @@ const useWeeklyWeather = () => {
         .catch(() => {
           Toast.show('Erro ao obter a previsão dos próximos dias')
         })
-        .finally(() => setIsLodadingNextDays(false))
+        .finally(() => setIsLoadingWeeklyWeather(false))
     } else {
       Toast.show('Localização não encontrada')
     }
   }
-  return { isLoadingNextDays, weeklyWeather, getWeeklyWeather, error }
+  return { isLoadingWeeklyWeather, weeklyWeather, getWeeklyWeather, error }
 }
 
 export { useTodayWeather, useWeeklyWeather }
