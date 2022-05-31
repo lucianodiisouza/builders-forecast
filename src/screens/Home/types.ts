@@ -19,3 +19,11 @@ export type WeatherResponse = {
   }
   weather: WeatherStatus[]
 }
+
+export interface Weekly extends WeatherResponse {
+  dt_txt: string
+}
+
+export type WeeklyWeatherResponse = {
+  list: Weekly[]
+}

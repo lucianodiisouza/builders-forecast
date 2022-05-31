@@ -13,7 +13,7 @@ const WeatherItem = ({ day, icon, color, temp }: WeatherItemProps) => {
       <WeatherItemLabel>{day}</WeatherItemLabel>
       <TempContainer>
         <Icon name={icon} size={24} color={color} />
-        <TemperatureLabel>{temp}</TemperatureLabel>
+        <TemperatureLabel>{temp}º </TemperatureLabel>
       </TempContainer>
     </Container>
   )

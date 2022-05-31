@@ -20,7 +20,6 @@ import { Container, SliderContainer } from './styles'
 const Home = () => {
   const { location } = useLocation()
   const { weather, getWeather, isLoading } = useTodayWeather()
-  const { weeklyWeather, getWeeklyWeather } = useWeeklyWeather()
 
   const [tomorrowWeather, setTomorrowWeather] = useState([
     {
@@ -103,13 +102,8 @@ const Home = () => {
   useEffect(() => {
     if (location) {
       getWeather(location)
-      getWeeklyWeather(location)
     }
   }, [location])
-
-  useEffect(() => {
-    console.warn(weeklyWeather)
-  }, [weeklyWeather])
 
   const handleActiveItems = active === 'hoje' ? todayWeather : tomorrowWeather
 

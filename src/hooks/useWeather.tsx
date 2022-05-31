@@ -1,7 +1,7 @@
 import { LocationObject } from 'expo-location'
 import { useState } from 'react'
 import Toast from 'react-native-root-toast'
-import { WeatherResponse } from '../screens/Home/types'
+import { WeatherResponse, WeeklyWeatherResponse } from '../screens/Home/types'
 import {
   fetchCurrentWeather,
   fetchNextDaysWeather,
@@ -43,7 +43,7 @@ const useTodayWeather = () => {
 
 const useWeeklyWeather = () => {
   const [isLoadingNextDays, setIsLodadingNextDays] = useState<boolean>(false)
-  const [weeklyWeather, setWeeklyWeather] = useState()
+  const [weeklyWeather, setWeeklyWeather] = useState<WeeklyWeatherResponse>()
   const [error, setError] = useState('')
 
   const getWeeklyWeather = (location: LocationObject) => {
