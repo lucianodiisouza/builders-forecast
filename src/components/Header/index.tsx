@@ -1,12 +1,8 @@
 import useDate from '../../utils/useDate'
 import { Container, Title, TextDate } from './styles'
+import { HeaderProps } from './types'
 
-type Props = {
-  city: string
-  country: string
-}
-
-const Header = ({ city, country }: Props) => {
+const Header = ({ city, country }: HeaderProps) => {
   const date = useDate()
 
   return (

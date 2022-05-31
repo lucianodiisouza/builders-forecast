@@ -1,16 +1,8 @@
 import SliderItem from '../SliderItem'
 import { Container, ScrollContainer } from './styles'
+import { TempSliderProps } from './types'
 
-type Item = {
-  time: string
-  temp: string
-  icon: string
-}
-
-type Props = {
-  temp: Item[]
-}
-const TempSlider = ({ temp }: Props) => {
+const TempSlider = ({ temp }: TempSliderProps) => {
   return (
     <Container>
       <ScrollContainer

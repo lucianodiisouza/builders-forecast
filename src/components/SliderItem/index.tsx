@@ -1,15 +1,9 @@
 import { AppColors } from '../../theme/GlobalStyles'
 import Icon from '../Icon'
 import { Container, ItemTime, ItemTemp } from './styles'
+import { SliderItemProps } from './types'
 
-type Props = {
-  time: string
-  temp: string
-  icon: string
-  isTheLast: boolean
-}
-
-const SliderItem = ({ time, temp, icon, isTheLast }: Props) => {
+const SliderItem = ({ time, temp, icon, isTheLast }: SliderItemProps) => {
   return (
     <Container isTheLast={isTheLast}>
       <ItemTime>{time}</ItemTime>

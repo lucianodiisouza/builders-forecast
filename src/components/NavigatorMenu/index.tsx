@@ -1,13 +1,9 @@
 import { AppColors } from '../../theme/GlobalStyles'
 import Icon from '../Icon'
 import { Container, Option, Label } from './styles'
+import { NavigationMenuProps } from './types'
 
-type Props = {
-  active: 'hoje' | 'amanha'
-  setActive: (active: 'hoje' | 'amanha') => void
-}
-
-const NavigatorMenu = ({ active, setActive }: Props) => {
+const NavigatorMenu = ({ active, setActive }: NavigationMenuProps) => {
   return (
     <Container>
       <Option onPress={() => setActive('hoje')}>

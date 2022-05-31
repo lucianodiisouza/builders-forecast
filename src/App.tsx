@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { RootSiblingParent } from 'react-native-root-siblings'
 
@@ -15,9 +14,3 @@ export default function App() {
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#000',
-  },
-})

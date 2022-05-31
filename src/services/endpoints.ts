@@ -1,9 +1,5 @@
 import api from '.'
-
-type CurrentWeatherRequestParams = {
-  lat: number
-  alt: number
-}
+import { CurrentWeatherRequestParams } from './types'
 
 const getCurrentWeather = async ({ lat, alt }: CurrentWeatherRequestParams) => {
   const response = await api.get('/weather', {
