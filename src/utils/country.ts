@@ -3,7 +3,7 @@ export const convertCountryCodeToCountry = (countryCode: string) => {
     case 'BR':
       return 'Brasil'
     case 'US':
-      return 'United States'
+      return 'Estados Unidos'
     default:
       return countryCode
   }

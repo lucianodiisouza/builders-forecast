@@ -9,16 +9,18 @@ import {
   TempText,
   WeatherType,
 } from './styles'
+import { CurrentTempProps } from './types'
 
-const CurrentTemp = () => {
+const CurrentTemp = ({ temp, weatherCondition }: CurrentTempProps) => {
+  const formattedTemp = temp.toFixed(0)
   return (
     <Container>
       <WeatherDay>Hoje</WeatherDay>
       <PrevisionContainer>
         <Icon name='sun' size={64} color={AppColors.YELLOW} />
-        <TempText>22 º</TempText>
+        <TempText>{formattedTemp} º</TempText>
       </PrevisionContainer>
-      <WeatherType>Ensolarado</WeatherType>
+      <WeatherType>{weatherCondition}</WeatherType>
     </Container>
   )
 }

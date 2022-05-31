@@ -28,4 +28,5 @@ export const WeatherType = styled.Text`
   color: ${AppColors.WHITE};
   font-size: 14px;
   margin-top: 10px;
+  text-transform: capitalize;
 `

@@ -1,3 +1,7 @@
+type WeatherStatus = {
+  description: 'céu limpo'
+}
+
 export type WeatherResponse = {
   main: {
     feels_like: number
@@ -13,4 +17,5 @@ export type WeatherResponse = {
   sys: {
     country: string
   }
+  weather: WeatherStatus[]
 }

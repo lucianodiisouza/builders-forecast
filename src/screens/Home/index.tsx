@@ -107,6 +107,10 @@ const Home = () => {
     }
   }, [location])
 
+  useEffect(() => {
+    console.log(weather)
+  }, [weather])
+
   const handleActiveItems = active === 'hoje' ? todayWeather : tomorrowWeather
 
   return (
@@ -116,12 +120,15 @@ const Home = () => {
         start={{ x: 0, y: 0.01 }}
         end={{ x: 1, y: 1 }}
       >
-        {!!location && <Text>Obtendo localização</Text>}
+        {!location && <Text>Obtendo localização</Text>}
         {isLoading && <Text>Carregando...</Text>}
         {!!weather && !isLoading && (
           <>
             <Header city={weather.name} country={weather.sys.country} />
-            <CurrentTemp />
+            <CurrentTemp
+              temp={weather.main.temp}
+              weatherCondition={weather.weather[0].description}
+            />
             <SliderContainer>
               <NavigationMenu active={active} setActive={setActive} />
               <TempSlider temp={handleActiveItems} />
