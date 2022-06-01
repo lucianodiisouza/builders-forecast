@@ -1,5 +1,6 @@
 import * as Network from 'expo-network'
 import { useEffect, useState } from 'react'
+import Toast from 'react-native-root-toast'
 
 const useNetwork = () => {
   const [networkStatus, setNetworkStatus] = useState<Network.NetworkState>()
@@ -7,7 +8,7 @@ const useNetwork = () => {
   const getNetworkStatus = () => {
     Network.getNetworkStateAsync()
       .then((res) => setNetworkStatus(res))
-      .catch((e) => console.warn(e))
+      .catch(() => Toast.show('Erro ao obter o status da rede'))
   }
 
   useEffect(() => {

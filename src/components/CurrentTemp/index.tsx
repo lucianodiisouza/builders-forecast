@@ -9,6 +9,7 @@ import {
   TempText,
   WeatherType,
 } from './styles'
+
 import { CurrentTempProps } from './types'
 import { getIcon } from '../../utils/icon'
 
