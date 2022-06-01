@@ -13,7 +13,7 @@ const NavigatorMenu = () => {
 
       <Option onPress={() => navigation.navigate('NextDays')}>
         <NextDaysLabel>
-          Próximos 5 dias
+          Próximos 5 dias{'   '}
           <Icon size={16} color={AppColors.GRAY} name='arrow-right' />
         </NextDaysLabel>
       </Option>

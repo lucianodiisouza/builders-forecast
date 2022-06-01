@@ -37,17 +37,15 @@ const WeatherProvider = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   useEffect(() => {
-    if (!isOffline) {
-      getLocation()
-    }
-  }, [isOffline])
+    getLocation()
+  }, [])
 
   useEffect(() => {
-    if (location) {
+    if (location && !isOffline) {
       getWeather(location)
       getWeeklyWeather(location)
     }
-  }, [location])
+  }, [location, isOffline])
 
   const tomorrowWeather = weeklyWeather ? tomorrowFilter(weeklyWeather) : []
 

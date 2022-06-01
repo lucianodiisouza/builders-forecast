@@ -6,6 +6,7 @@ const useLocation = () => {
   const [location, setLocation] = useState<Location.LocationObject>()
 
   const getLocation = useCallback(async () => {
+    setLocation(undefined)
     const { status } = await Location.requestForegroundPermissionsAsync()
 
     if (status !== 'granted') {
@@ -14,7 +15,10 @@ const useLocation = () => {
     }
 
     const location = await Location.getCurrentPositionAsync({})
-    setLocation(location)
+
+    if (location) {
+      setLocation(location)
+    }
   }, [])
 
   useEffect(() => {
