@@ -3,6 +3,13 @@
 This app was builted using React Native for Builders ReactNative challenge <br />
 Challenge: https://platformbuilders.notion.site/Desafio-735535d8d3ac484a9a969c454813ccc5
 
+### Demo video
+https://youtu.be/MhOo1uVJ57s
+
+### ScreenShot
+
+<img width="342" alt="screenshot" src="https://user-images.githubusercontent.com/10830068/171305931-4f6ea5e2-c25c-4580-ae76-01b825e5fe3a.png">
+
 ### libs
 
 - expo
@@ -10,6 +17,11 @@ Challenge: https://platformbuilders.notion.site/Desafio-735535d8d3ac484a9a969c45
 - expo-location
 - lottie-react-native
 - feather icons -> https://feathericons.com/?query=weat
+- expo-linear-gradient
+- react-navigation
+- react-native-root-toast
+- styled-components
+- expo-network
 
 ### dribbble design catched from
 
@@ -35,6 +47,3 @@ https://dribbble.com/shots/7106462-Weather-App
 - [x] migrate all weather data to context
 - [x] check if user is online (use expo-network // react-community/net-info)
 - [x] validate api status - the api does not provide an health status
-- [ ] add loading screen (splash)
-- [ ] add app icon
-- [ ] deploy to expo
